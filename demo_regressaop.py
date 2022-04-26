@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from matplotlib import projections
 from mpl_toolkits import mplot3d
 from sklearn import linear_model
+import random
 
 def regressaoPolinominal(x, beta, n):
     if n == 1:
@@ -92,5 +93,83 @@ if __name__ == '__main__':
     plt.plot(x, reg8, 'y')
     plt.show()
 
-    print('G) EQM1:' + str(eqm1) + '\nEQM2: ' + str(eqm2) + '\nEQM3: ' + str(eqm3) + '\nEQM8: ' + str(eqm8))
+    print('G) EQM1:' + str(eqm1) + '\nEQM2: ' + str(eqm2) + '\nEQM3: ' + str(eqm3) + '\nEQM8: ' + str(eqm8) + '\nQual é o mais preciso? ')
+
+    print('\nH)')
+    
+    #Divisão 90-10
+    msk = np.random.rand(len(data)) < 0.9
+    treino = data[msk]
+    teste = data[~msk]
+
+    xDadosDeTeste = np.array(teste[0])
+    yDadosDeTeste = np.array(teste[1])
+
+    xDadosDeTreinamento = np.array(treino[0])
+    yDadosDeTreinamento = np.array(treino[1])
+
+    print('\nX dados de teste' + str(xDadosDeTeste))
+    print('\nY dados de teste' + str(yDadosDeTeste))
+
+    print('\nX dados de treinamento' + str(xDadosDeTreinamento))
+    print('\nY dados de treinamento' + str(yDadosDeTreinamento))
+
+    print('\nI)')
+
+    print('N = 1')
+
+    betaI1 = np.polyfit(xDadosDeTreinamento, yDadosDeTreinamento, 1)
+    regI1 = regressaoPolinominal(xDadosDeTreinamento, betaI1, 1)
+
+    plt.scatter(xDadosDeTreinamento, yDadosDeTreinamento)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Grafico de dispersão - Betas: ' + str(betaI1))
+    plt.plot(xDadosDeTreinamento, regI1, 'r')
+    plt.show()
+
+    print('N = 2')
+
+    betaI2 = np.polyfit(xDadosDeTreinamento, yDadosDeTreinamento, 2)
+    regI2 = regressaoPolinominal(xDadosDeTreinamento, betaI2, 2)
+
+    plt.scatter(xDadosDeTreinamento, yDadosDeTreinamento)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Grafico de dispersão - Betas: ' + str(betaI2))
+    plt.plot(xDadosDeTreinamento, regI2, 'g')
+    plt.show()
+
+    print('N = 3')
+
+    betaI3 = np.polyfit(xDadosDeTreinamento, yDadosDeTreinamento, 3)
+    regI3 = regressaoPolinominal(xDadosDeTreinamento, betaI3, 3)
+
+    plt.scatter(xDadosDeTreinamento, yDadosDeTreinamento)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Grafico de dispersão - Betas: ' + str(betaI3))
+    plt.plot(xDadosDeTreinamento, regI3, 'black')
+    plt.show()
+
+    print('N = 8')
+
+    betaI8 = np.polyfit(xDadosDeTreinamento, yDadosDeTreinamento, 8)
+    regI8 = regressaoPolinominal(xDadosDeTreinamento, betaI8, 8)
+
+    plt.scatter(xDadosDeTreinamento, yDadosDeTreinamento)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Grafico de dispersão - Betas: ' + str(betaI8))
+    plt.plot(xDadosDeTreinamento, regI8, 'y')
+    plt.show()
+
+    eqmI1 = eqm(yDadosDeTeste, regI1)
+    eqmI2 = eqm(yDadosDeTeste, regI2)
+    eqmI3 = eqm(yDadosDeTeste, regI3)
+    eqmI8 = eqm(yDadosDeTeste, regI8)
+
+    print('J) EQM1:' + str(eqmI1) + '\nEQM2: ' + str(eqmI2) + '\nEQM3: ' + str(eqmI3) + '\nEQM8: ' + str(eqmI8) + '\nQual é o mais preciso? ')
+
+
 
