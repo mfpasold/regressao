@@ -1,3 +1,8 @@
+# GRUPO 03
+# Fábio Franz
+# Matheus Pasold
+# Minéia Maschio
+
 import numpy
 import numpy as np
 import statistics as stats
