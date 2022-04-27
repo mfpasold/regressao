@@ -40,7 +40,7 @@ if __name__ == '__main__':
     plt.xlabel('x')
     plt.ylabel('y')
     plt.title('Grafico de dispersão')
-    plt.show()
+    #plt.show()
 
     print('C)')
 
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     plt.ylabel('y')
     plt.title('Grafico de dispersão - Betas: ' + str(beta1) + '\n Eqm: ' + str(eqm1))
     plt.plot(x, reg1, 'r')
-    plt.show()
+    #plt.show()
 
     print('D)')
 
@@ -66,7 +66,7 @@ if __name__ == '__main__':
     plt.ylabel('y')
     plt.title('Grafico de dispersão - Betas: ' + str(beta2) + '\n Eqm: ' + str(eqm2))
     plt.plot(x, reg2, 'g')
-    plt.show()
+    #plt.show()
 
     print('E)')
 
@@ -79,7 +79,7 @@ if __name__ == '__main__':
     plt.ylabel('y')
     plt.title('Grafico de dispersão - Betas: ' + str(beta3) + '\n Eqm: ' + str(eqm3))
     plt.plot(x, reg3, 'black')
-    plt.show()
+    #plt.show()
 
     print('F)')
 
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     plt.ylabel('y')
     plt.title('Grafico de dispersão - Betas: ' + str(beta8) + '\n Eqm: ' + str(eqm8))
     plt.plot(x, reg8, 'y')
-    plt.show()
+    #plt.show()
 
     print('G) EQM1:' + str(eqm1) + '\nEQM2: ' + str(eqm2) + '\nEQM3: ' + str(eqm3) + '\nEQM8: ' + str(eqm8) + '\nQual é o mais preciso? EQM8')
 
@@ -127,7 +127,7 @@ if __name__ == '__main__':
     plt.ylabel('y')
     plt.title('Grafico de dispersão - Betas: ' + str(betaI1))
     plt.plot(xDadosDeTreinamento, regI1, 'r')
-    plt.show()
+    #plt.show()
 
     print('N = 2')
 
@@ -139,7 +139,7 @@ if __name__ == '__main__':
     plt.ylabel('y')
     plt.title('Grafico de dispersão - Betas: ' + str(betaI2))
     plt.plot(xDadosDeTreinamento, regI2, 'g')
-    plt.show()
+    #plt.show()
 
     print('N = 3')
 
@@ -151,7 +151,7 @@ if __name__ == '__main__':
     plt.ylabel('y')
     plt.title('Grafico de dispersão - Betas: ' + str(betaI3))
     plt.plot(xDadosDeTreinamento, regI3, 'black')
-    plt.show()
+    #plt.show()
 
     print('N = 8')
 
@@ -163,24 +163,24 @@ if __name__ == '__main__':
     plt.ylabel('y')
     plt.title('Grafico de dispersão - Betas: ' + str(betaI8))
     plt.plot(xDadosDeTreinamento, regI8, 'y')
-    plt.show()
-
-    eqmI1 = eqm(yDadosDeTeste, regI1)
-    eqmI2 = eqm(yDadosDeTeste, regI2)
-    eqmI3 = eqm(yDadosDeTeste, regI3)
-    eqmI8 = eqm(yDadosDeTeste, regI8)
-
-    print('J) EQM1:' + str(eqmI1) + '\nEQM2: ' + str(eqmI2) + '\nEQM3: ' + str(eqmI3) + '\nEQM8: ' + str(eqmI8) + '\nQual é o mais preciso? EQM2')
-
-    r2N1 = r2_score(yDadosDeTreinamento, regI1)
-    r2N2 = r2_score(yDadosDeTreinamento, regI2)
-    r2N3 = r2_score(yDadosDeTreinamento, regI3)
-    r2N8 = r2_score(yDadosDeTreinamento, regI8)
+    #plt.show()
 
     regI1Teste = regressaoPolinominal(xDadosDeTeste, betaI1, 1)
     regI2Teste = regressaoPolinominal(xDadosDeTeste, betaI2, 2)
     regI3Teste = regressaoPolinominal(xDadosDeTeste, betaI3, 3)
     regI8Teste = regressaoPolinominal(xDadosDeTeste, betaI8, 8)
+
+    eqmI1 = eqm(yDadosDeTeste, regI1Teste)
+    eqmI2 = eqm(yDadosDeTeste, regI2Teste)
+    eqmI3 = eqm(yDadosDeTeste, regI3Teste)
+    eqmI8 = eqm(yDadosDeTeste, regI8Teste)
+
+    print('J) EQM1:' + str(eqmI1) + '\nEQM2: ' + str(eqmI2) + '\nEQM3: ' + str(eqmI3) + '\nEQM8: ' + str(eqmI8) + '\nQual é o mais preciso? EQM3')
+
+    r2N1 = r2_score(yDadosDeTreinamento, regI1)
+    r2N2 = r2_score(yDadosDeTreinamento, regI2)
+    r2N3 = r2_score(yDadosDeTreinamento, regI3)
+    r2N8 = r2_score(yDadosDeTreinamento, regI8)
 
     r2N1Teste = r2_score(yDadosDeTeste, regI1Teste)
     r2N2Teste = r2_score(yDadosDeTeste, regI2Teste)
@@ -189,3 +189,6 @@ if __name__ == '__main__':
   
     print('\nK) R2 dos dados de treinameto \nR2 n=1: ' + str(r2N1) + '\nR2 n=2: ' + str(r2N2) + '\nR2 n=3: ' + str(r2N3) + '\nR2 n=8: ' + str(r2N8))
     print('\nR2 dos dados de teste \nR2 n=1: ' + str(r2N1Teste) + '\nR2 n=2: ' + str(r2N2Teste) + '\nR2 n=3: ' + str(r2N3Teste) + '\nR2 n=8: ' + str(r2N8Teste))
+
+    print('\nO que se pode concluir com os resultados?: Rodamos o algoritmo 10 vezes para analisar os resultados. A média do resultados de cada n dos dados de treinamento e de teste não houveram muita alteração, ou seja, o algoritmo chegou a um resultado ideal. Nas duas bases de dados quanto menos o n menos preciso ele é, mas a partir do n=3 já tinham bons resultados')
+    print('\nVisto o cálculo do erro e do coeficiente de determinação, qual o modelo mais preciso neste caso? Os modelos que tiveram melhor resultado foram o n=3 e n=8, sendo que o n=8 foi um pouco mais preciso')
