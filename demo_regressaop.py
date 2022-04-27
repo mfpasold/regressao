@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from matplotlib import projections
 from mpl_toolkits import mplot3d
 from sklearn import linear_model
+from sklearn.metrics import r2_score
 import random
 
 def regressaoPolinominal(x, beta, n):
@@ -93,7 +94,7 @@ if __name__ == '__main__':
     plt.plot(x, reg8, 'y')
     plt.show()
 
-    print('G) EQM1:' + str(eqm1) + '\nEQM2: ' + str(eqm2) + '\nEQM3: ' + str(eqm3) + '\nEQM8: ' + str(eqm8) + '\nQual é o mais preciso? ')
+    print('G) EQM1:' + str(eqm1) + '\nEQM2: ' + str(eqm2) + '\nEQM3: ' + str(eqm3) + '\nEQM8: ' + str(eqm8) + '\nQual é o mais preciso? EQM8')
 
     print('\nH)')
     
@@ -169,7 +170,22 @@ if __name__ == '__main__':
     eqmI3 = eqm(yDadosDeTeste, regI3)
     eqmI8 = eqm(yDadosDeTeste, regI8)
 
-    print('J) EQM1:' + str(eqmI1) + '\nEQM2: ' + str(eqmI2) + '\nEQM3: ' + str(eqmI3) + '\nEQM8: ' + str(eqmI8) + '\nQual é o mais preciso? ')
+    print('J) EQM1:' + str(eqmI1) + '\nEQM2: ' + str(eqmI2) + '\nEQM3: ' + str(eqmI3) + '\nEQM8: ' + str(eqmI8) + '\nQual é o mais preciso? EQM2')
 
+    r2N1 = r2_score(yDadosDeTreinamento, regI1)
+    r2N2 = r2_score(yDadosDeTreinamento, regI2)
+    r2N3 = r2_score(yDadosDeTreinamento, regI3)
+    r2N8 = r2_score(yDadosDeTreinamento, regI8)
 
+    regI1Teste = regressaoPolinominal(xDadosDeTeste, betaI1, 1)
+    regI2Teste = regressaoPolinominal(xDadosDeTeste, betaI2, 2)
+    regI3Teste = regressaoPolinominal(xDadosDeTeste, betaI3, 3)
+    regI8Teste = regressaoPolinominal(xDadosDeTeste, betaI8, 8)
 
+    r2N1Teste = r2_score(yDadosDeTeste, regI1Teste)
+    r2N2Teste = r2_score(yDadosDeTeste, regI2Teste)
+    r2N3Teste = r2_score(yDadosDeTeste, regI3Teste)
+    r2N8Teste = r2_score(yDadosDeTeste, regI8Teste)
+  
+    print('\nK) R2 dos dados de treinameto \nR2 n=1: ' + str(r2N1) + '\nR2 n=2: ' + str(r2N2) + '\nR2 n=3: ' + str(r2N3) + '\nR2 n=8: ' + str(r2N8))
+    print('\nR2 dos dados de teste \nR2 n=1: ' + str(r2N1Teste) + '\nR2 n=2: ' + str(r2N2Teste) + '\nR2 n=3: ' + str(r2N3Teste) + '\nR2 n=8: ' + str(r2N8Teste))
